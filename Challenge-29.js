@@ -40,42 +40,56 @@
         },
 
         initEvents: function initEvents() {
-          new DOM( '[data-js="form-register"]' ).on( 'submit', this.handleSubmit );         
+          new DOM( '[data-js="form-register"]' ).on( 'submit', this.handleSubmit );     
         },
 
         handleSubmit: function handleSubmit( e ) {
           e.preventDefault();
-          console.log( 'submit' );
           var $tableCar = new DOM( '[data-js="table-car"]' ).get();
+          console.log( 'submit' );
           $tableCar.appendChild( app.createNewCar() )
         },
 
         createNewCar: function createNewCar() {
           var $fragment = document.createDocumentFragment();
-          var $tr = document.createElement( 'tr' );
-          var $tdImage = document.createElement( 'td' );
-          var $image = document.createElement( 'img' );
-          var $tdBrand = document.createElement( 'td' );
-          var $tdYear = document.createElement( 'td' );
-          var $tdPlate = document.createElement( 'td' );
-          var $tdColor = document.createElement( 'td' );
-
-          $image.setAttribute( 'src', new DOM( '[data-js="image"]' ).get().value );
-          $tdImage.appendChild( $image );
-
-          
-          $tdBrand.textContent = new DOM( '[data-js="brand-model"]' ).get().value;
-          $tdYear.textContent = new DOM ( '[data-js="year"]' ).get().value;
-          $tdPlate.textContent = new DOM( '[data-js="plate"]' ).get().value;
-          $tdColor.textContent = new DOM( '[data-js="color"]' ).get().value; 
-
-          $tr.appendChild( $tdImage );
-          $tr.appendChild( $tdBrand );
-          $tr.appendChild( $tdYear );
-          $tr.appendChild( $tdPlate );
-          $tr.appendChild( $tdColor );
-
-          return $fragment.appendChild( $tr );
+          var $tr = document.createElement('tr');
+          var $tdImage = document.createElement('td');
+          var $tdBrand = document.createElement('td');
+          var $tdYear = document.createElement('td');
+          var $tdPlate = document.createElement('td');
+          var $tdColor = document.createElement('td');
+          var $tdRemove = document.createElement('td');
+          var $buttonRemove = document.createElement('button')
+          var $image = document.createElement('img');
+  
+          $tr.setAttribute('id', new DOM('[data-js="plate"]').get().value);
+  
+          $image.setAttribute('src', new DOM('[data-js="image"]').get().value);
+          $tdImage.appendChild($image)
+  
+          $tdRemove.appendChild($buttonRemove);
+          $buttonRemove.innerHTML = 'Remover';
+          $buttonRemove.setAttribute('data-remove', new DOM('[data-js="plate"]').get().value);
+          $buttonRemove.classList.add('btn-remove');
+  
+          $buttonRemove.addEventListener('click', function() {
+            $tr.parentNode.removeChild($tr);
+          });
+  
+          $tdBrand.textContent = new DOM('[data-js="brand-model"]').get().value;
+          $tdYear.textContent = new DOM('[data-js="year"]').get().value;
+          $tdPlate.setAttribute('class', 'plate');
+          $tdPlate.textContent = new DOM('[data-js="plate"]').get().value;
+          $tdColor.textContent = new DOM('[data-js="color"]').get().value;
+  
+          $tr.appendChild($tdImage);
+          $tr.appendChild($tdBrand);
+          $tr.appendChild($tdYear);
+          $tr.appendChild($tdPlate);
+          $tr.appendChild($tdColor);
+          $tr.appendChild($tdRemove);
+  
+          return $fragment.appendChild($tr);
         },
 
         companyInfo: function companyInfo() {
