@@ -14,44 +14,49 @@
             <span data-js="company-phone"></span>
         </h1>
     </header>
-
-    <form action="/" data-js="form-register">
-        <ul>
-            <li>
-                <label>imagem do carro:</label>
-                <input type="url" data-js="image"/>
-            </li>
-            <li>
-                <label>Marca / Modelo:</label>
-                <input type="text" data-js="brand-model" />
-            </li>
-            <li>
-                <label>Ano:</label>
-                <input type="text" data-js="year" />
-            </li>
-            <li>
-                <label>Placa:</label>
-                <input type="text" data-js="plate" />
-            </li>
-            <li>
-                <label>cor:</label>
-                <input type="text" data-js="color" />
-            </li>
-            <li>
-                <button type="submit">Cadastrar</button>
-            </li>
-        </ul>
-    </form>
-    <table>
-        <thead>
-            <tr>
-                <th>Imagem do Carro</th>
-                <th>Marca / Modelo</th>
-                <th>Ano</th>
-                <th>Placa</th>
-                <th>Cor</th>
-            </tr>
-        </thead>
+    <section class="main-content">
+        <form action="/" data-js="form-register">
+            <ul>
+                <li>
+                    <label>imagem do carro:</label>
+                    <input type="url" data-js="image"/>
+                </li>
+                <li>
+                    <label>Marca / Modelo:</label>
+                    <input type="text" data-js="brand-model" />
+                </li>
+                <li>
+                    <label>Ano:</label>
+                    <input type="text" data-js="year" />
+                </li>
+                <li>
+                    <label>Placa:</label>
+                    <input type="text" data-js="plate" />
+                </li>
+                <li>
+                    <label>cor:</label>
+                    <input type="text" data-js="color" />
+                </li>
+                <li>
+                    <button type="submit">Cadastrar</button>
+                    <button type="reset">Limpar</button>
+                </li>
+            </ul>
+        </form>
+    <div class="table-content">
+        <table>
+            <thead>
+                <tr>
+                    <th>Imagem do Carro</th>
+                    <th>Marca / Modelo</th>
+                    <th>Ano</th>
+                    <th>Placa</th>
+                    <th>Cor</th>
+                    <th>Remover Carro</th>
+                </tr>
+            </thead>
+        </div>
+    </section>
         <tbody data-js="table-car"></tbody>
     </table>
     <script src="dom.js"></script>
